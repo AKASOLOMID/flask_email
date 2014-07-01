@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	 <script type="text/javascript" src="http://www.json.org/json2.js"></script>
+	 <script>
+		$(document).ready(function() {
+		
+		   $('#myform').bind('submit', function(event){
+		
+			    event.preventDefault();
+			
+				array = $(this).serializeArray();
+			
+				var mapForm = {};
+				$.each(array, function(){
+					mapForm[this.name] = this.value || '';
+				});
+			
+				var jsonData = JSON.stringify(mapForm);
+			
+				$.ajax({
+					type: 'POST',
+					data: jsonData,
+					dataType:'html',
+					contentType : 'application/json',
+					success: function(data) {
+					    $('#result').html('Response:<br>'+data);
+					    }
+				});
+		            
+				return true;
+			});
+		});
+	</script>
+</head>
+
+
+<body>
+	<p>email form</p>
+	<form action="/" method="post"  id="myform">
+		<pre>to:</pre> <input type="text" name="to" size="20"><br>
+		<pre>to name:</pre> <input type="text" name="to_name" size="20"><br>
+		<pre>from:</pre> <input type="text" name="from" size="20"><br>
+		<pre>from name:</pre> <input type="text" name="from_name" size="20"><br>
+		<pre>subject:</pre> <input type="text" name="subject" size="50" ><br>
+		<pre>body:</pre> <textarea name="body" rows="10" cols="100"></textarea><br><br><br>
+		<input type="submit" value="send">
+	</form>
+	
+	<p></p>
+	<p id="result"></p>
+	
+</body>
+</html>
