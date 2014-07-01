@@ -1,12 +1,11 @@
---allow-external py_w3c
---allow-unverified py_w3c
-py_w3c
+--allow-all-external
+--allow-unverified py-w3c
 Flask==0.10.1
 Jinja2==2.7.3
 MarkupSafe==0.23
 Werkzeug==0.9.6
 gunicorn==19.0.0
 itsdangerous==0.24
+py-w3c
 requests==2.3.0
 wsgiref==0.1.2
-

@@ -3,11 +3,10 @@ from src import email_flask_db
 import requests
 import app_config
 from src.EmailHandler import EmailHandler
+import sys, os
 
-
-
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 app =  Flask(__name__)
-
 app.config.from_object(app_config.ProductionConfig)
 
 email_handler = EmailHandler()
