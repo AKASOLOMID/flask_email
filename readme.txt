@@ -86,5 +86,4 @@ You reach the end of the document. I am glad you read it all. Thank you for your
 
 Alex
 
-Config in test, config in prod, db 
 
