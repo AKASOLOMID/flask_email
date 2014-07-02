@@ -1,7 +1,7 @@
 Abstract
 
-1.This email service implements the following Functionality:
-2.Tttp round trip between both client and email service provider
+1.This email service implements the following functionality:
+2.Http round trip between both client and email service provider
 3.Validate input data including html validation
 4.Dynamically select provider based on response from the provider.
 5.Use lightweight query-able storage to keep records of emails passing through the service
