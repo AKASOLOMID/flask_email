@@ -63,6 +63,8 @@ Table: recipient_email (email_id integer, to_address text, to_name text, to_type
   
 First table is the email table. Id is the primary key. The second table stores all the recipients of one email The primary key for recipient_email table is email_id and to_address. As you can see two tables are one-to-many relationship. Email Id value is generated using sqlite3 auto-increment integer in the email table. Then it gets passed to recipient email table.  Current Schema mainly supports data logging.  The logging happens whenever application gets a http response from providers. In addition to the input data, the response message is stored to state column in email table.  Db schema can be further developed to support attachments. 
 
+to do: Add internet access to db
+
 Configuration
 
 There is a application level config file calld app_config.py. It has db location and debug flag.
