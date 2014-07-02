@@ -62,9 +62,11 @@ Table: email(id integer primary key, from_address text, from_name text, subject 
 Table: recipient_email (email_id integer, to_address text, to_name text, to_type text, time text);
   
 First table is the email table. Id is the primary key. The second table stores all the recipients of one email The primary key for recipient_email table is email_id and to_address. As you can see two tables are one-to-many relationship. Email Id value is generated using sqlite3 auto-increment integer in the email table. Then it gets passed to recipient email table.  Current Schema mainly supports data logging.  The logging happens whenever application gets a http response from providers. In addition to the input data, the response message is stored to state column in email table.  Db schema can be further developed to support attachments. 
+
 Configuration
 
-Configuration file is in the src/emailservice directory, named config.py. It is a list of python dict type keeping the configuration for service provider. Each configuration dict follows the naming standard <class_name>_config.  Engine uses this name to find the corresponding class.
+There is a application level config file calld app_config.py. It has db location and debug flag.
+email_service configuration file is in the src/emailservice directory, named config.py. It is a list of python dict type keeping the configuration for service provider. Each configuration dict follows the naming standard <class_name>_config.  Engine uses this name to find the corresponding class.
 
 Testing
 
