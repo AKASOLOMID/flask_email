@@ -1,13 +1,13 @@
 Abstract
 
-This email service implements the following Functionality:
-Tttp round trip between both client and email service provider
-Validate input data including html validation
-Dynamically select provider based on response from the provider.
-Use lightweight query-able storage to keep records of emails passing through the service
-It is deployed at HeroKu and can be accessed via a simple test ui:
-http://obscure-springs-9663.herokuapp.com/
-This is also the url which accepts http json post.
+1.This email service implements the following Functionality:
+2.Tttp round trip between both client and email service provider
+3.Validate input data including html validation
+4.Dynamically select provider based on response from the provider.
+5.Use lightweight query-able storage to keep records of emails passing through the service
+6.It is deployed at HeroKu and can be accessed via a simple test ui:
+  http://obscure-springs-9663.herokuapp.com/
+  This is also the url which accepts http json post.
 
 Framework
 
@@ -15,11 +15,11 @@ This project is developed using Flask micro web framework.  The reason to choose
 
 Functionality and Internal Flow
 
-1.	This email service receives email sending request from client with json data
-2.	It validates data and immediately returns bad response to client if data fails validation  
-3.	It finds one service providers on its list, converts the data to a format that is accepted this provider, and then sends the request to that provider. If it gets bad response from the service provider, a request timeout, it will turn to the next provider on its provider list to try to post the data again. 
-4.	It will not stop until it either sends the data successfully or goes through all the providers but cannot get the data sent. 
-5.	It sends a http response to notify client about the result.
+1.This email service receives email sending request from client with json data
+2.It validates data and immediately returns bad response to client if data fails validation  
+3.It finds one service providers on its list, converts the data to a format that is accepted this provider, and then sends the request to that provider. If it gets bad response from the service provider, a request timeout, it will turn to the next provider on its provider list to try to post the data again. 
+4.It will not stop until it either sends the data successfully or goes through all the providers but cannot get the data sent. 
+5.It sends a http response to notify client about the result.
 
 
 Service provider
