@@ -8,6 +8,7 @@ Use lightweight query-able storage to keep records of emails passing through the
 It is deployed at HeroKu and can be accessed via a simple test ui:
 http://obscure-springs-9663.herokuapp.com/
 This is also the url which accepts http json post.
+
 Framework
 
 This project is developed using Flask micro web framework.  The reason to choose Flask is first, because it is python which has a good community. And second, it is really easy to learn and is good at developing small web application within limited time. In Flask, every application is a single process and a web server can have several processes running the same application code. Such design is not good for complicated web service but makes small web service easy to develop.
@@ -24,7 +25,9 @@ Functionality and Internal Flow
 Service provider
 
 3 files handle the interaction with services providers. An abstract class, EmailService.py defines apis that all providers need to have.  It has two subclasses MailGunEmailServiceHttp and MandrillEmailServiceHttp. Each implements the apis.  
+
 Engine
+
 Email_Handler is the service engine. It is created before service starts to accept request. When it is created, it finds all the providers from a config file and put them in a list.  So every provider has to have one configuration entry in the config file in order to register. When engine reads the config file at the run time, it dynamically imports each provider’s api class. Such design pattern makes adding new service provider without changing the existing code.  Adding new provider only has 3 requirements.  First, new class needs to inherit abstract service class. Second, add an entry in the config file for new class needs. And the last, new class needs to be placed in the same directory where all other existing service apis sit so engine knows where to import it.
 When concrete provider class object is initialized, it will ping its provider to check its configuration.  If it finds some error which is not self recoverable, for example, the service url is wrong or api_key is not correct.  It will not be placed into the provider list.
 Email_Handler is also designed to be stateless and singleton in the application. This ensures each request can call it without a lock.  
